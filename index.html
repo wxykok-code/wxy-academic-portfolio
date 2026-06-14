@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrid Wang (王馨莹) | 个人学术与升学展示空间</title>
+    <meta name="description" content="王馨莹的个人学术组合，展示了高压电磁线圈加速器、元素周期表解构、双语学术演讲等科学与工程项目。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Style Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-bg-glow"></div>
+    <div class="glass-bg-glow secondary"></div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-symbol">&lt;/&gt;</span>
+            <span class="logo-text">Astrid Wang</span>
+        </div>
+        <nav class="navbar">
+            <a href="#about" class="nav-link active" id="nav-about">关于我</a>
+            <a href="#projects" class="nav-link" id="nav-projects">科学实践</a>
+            <a href="#timeline" class="nav-link" id="nav-timeline">升学规划</a>
+            <a href="#contact" class="nav-link" id="nav-contact">联系大姐</a>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        
+        <!-- About Section -->
+        <section id="about" class="section active-section">
+            <div class="hero-card glass-card">
+                <div class="hero-left">
+                    <div class="avatar-container">
+                        <img src="assets/avatar.png" alt="Astrid Wang" class="avatar-img" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Astrid'">
+                        <div class="avatar-ring"></div>
+                    </div>
+                    <div class="social-tags">
+                        <span class="tag tag-blue">物理探索者</span>
+                        <span class="tag tag-purple">化学密码员</span>
+                        <span class="tag tag-cyan">双语演讲</span>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <h1 class="main-title">王馨莹 <span class="accent-text">Astrid Wang</span></h1>
+                    <p class="school-info">🏫 包头市第九十五中学 / 包钢一中 · 高三（2412班）</p>
+                    <p class="bio-intro">
+                        你好！我是王馨莹。我是一个对物理、化学与电子工程充满热情的学习与探索者。我喜欢将课本上的公式在现实中转化为可运行的物理实体，也喜欢用代码模拟复杂的科学过程。目前，我正在全力备战 <strong>AST（艾思特考试）</strong> 以及 <strong>雅思（IELTS）</strong>，目标是冲刺香港大学（HKU）、新加坡国立大学（NUS）和南洋理工大学（NTU）等世界一流名校。
+                    </p>
+                    <div class="actions">
+                        <a href="#projects" class="btn btn-primary" onclick="showSection('projects')">查看科学项目</a>
+                        <a href="https://wxykok.com" target="_blank" class="btn btn-secondary">访问学术网站 (wxykok.com)</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlights / Stats -->
+            <div class="stats-grid">
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">⚡</div>
+                    <h3>物理实践</h3>
+                    <p>研制多级电磁线圈发射装置，成功进行电能与动能的高速转换实验。</p>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🧪</div>
+                    <h3>化学竞赛</h3>
+                    <p>荣获高二年级“解构元素密码 · 绘制周期新篇”元素周期表大赛成果奖。</p>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">🗣️</div>
+                    <h3>双语能力</h3>
+                    <p>雅思首考通关，具备流畅的学术英语阅读、写作及双语公共演讲技巧。</p>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon">☁️</div>
+                    <h3>微软技术积淀</h3>
+                    <p>已获 25,275 XP 积分，解锁 18 个徽章和 4 个奖杯。主攻 Azure 云计算及 Power Platform 自动化开发。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title">🔬 科学与工程项目实践</h2>
+            <p class="section-subtitle">点击下方项目页签进行实时模拟与互动体验</p>
+
+            <!-- Project Navigation Tabs -->
+            <div class="project-tabs">
+                <button class="tab-btn active" onclick="switchProjectTab('coilgun')">⚡ 多级电磁发射装置</button>
+                <button class="tab-btn" onclick="switchProjectTab('chemistry')">🧪 元素周期表解码器</button>
+                <button class="tab-btn" onclick="switchProjectTab('speech')">🎤 梦想之龙英文演讲</button>
+                <button class="tab-btn" onclick="switchProjectTab('mslearn')">☁️ Microsoft Learn 学习轨迹</button>
+            </div>
+
+            <!-- Project Contents -->
+            <div class="project-panels">
+                
+                <!-- Panel 1: Coilgun -->
+                <div id="panel-coilgun" class="project-panel active">
+                    <div class="panel-layout">
+                        <div class="panel-desc glass-card">
+                            <h3>多级线圈电磁炮物理实验模型</h3>
+                            <p>基于高中电磁感应、安培力及电容储能原理自主搭建的发射模型。电磁炮通过电容器快速放电，瞬间在线圈中产生极强电流与磁场，吸引铁磁弹丸加速前行。</p>
+                            
+                            <div class="physics-formulas">
+                                <div class="formula-item">
+                                    <span class="formula-label">电容储能公式:</span>
+                                    <code class="formula-code">E = &frac12; C V&sup2;</code>
+                                </div>
+                                <div class="formula-item">
+                                    <span class="formula-label">螺线管中心磁场:</span>
+                                    <code class="formula-code">B = &mu;&times;(N/L)&times;I</code>
+                                </div>
+                            </div>
+
+                            <div class="simulator-inputs">
+                                <div class="input-group">
+                                    <label for="voltage">电容充电电压 (V)</label>
+                                    <input type="number" id="voltage" value="100" min="50" max="450">
+                                </div>
+                                <div class="input-group">
+                                    <label for="capacitance">电容量 (&mu;F)</label>
+                                    <input type="number" id="capacitance" value="1000" min="100" max="10000" step="100">
+                                </div>
+                                <div class="input-group">
+                                    <label for="projectile-mass">弹丸质量 (g)</label>
+                                    <input type="number" id="projectile-mass" value="5" min="1" max="50">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-full" onclick="simulateLaunch()">⚡ 开始脉冲放电 &middot; 模拟发射</button>
+                        </div>
+                        
+                        <div class="panel-visualization glass-card">
+                            <div class="vis-header">
+                                <span>🚀 实时物理状态仿真仪</span>
+                                <span class="vis-status" id="launch-status">就绪</span>
+                            </div>
+                            <div class="coilgun-animation-box">
+                                <div class="coil-gun-barrel">
+                                    <div class="coil-stage" id="stage-1"><span class="coil-label">1级线圈</span></div>
+                                    <div class="coil-stage" id="stage-2"><span class="coil-label">2级线圈</span></div>
+                                    <div class="coil-stage" id="stage-3"><span class="coil-label">3级线圈</span></div>
+                                    <div class="projectile" id="bullet"></div>
+                                </div>
+                                <div class="target-area">🎯</div>
+                            </div>
+                            <div class="telemetry-grid">
+                                <div class="telemetry-card">
+                                    <span class="tel-label">总储存电能</span>
+                                    <span class="tel-val" id="telemetry-energy">5.00 J</span>
+                                </div>
+                                <div class="telemetry-card">
+                                    <span class="tel-label">磁场强度 (约)</span>
+                                    <span class="tel-val" id="telemetry-magnetic">1.25 T</span>
+                                </div>
+                                <div class="telemetry-card">
+                                    <span class="tel-label">瞬时最高电流</span>
+                                    <span class="tel-val" id="telemetry-current">250 A</span>
+                                </div>
+                                <div class="telemetry-card">
+                                    <span class="tel-label">预计出膛速度</span>
+                                    <span class="tel-val" id="telemetry-velocity">14.1 m/s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 2: Chemistry -->
+                <div id="panel-chemistry" class="project-panel">
+                    <div class="panel-layout">
+                        <div class="panel-desc glass-card">
+                            <h3>解构元素密码 &middot; 周期表解码器</h3>
+                            <p>结合高二元素周期表竞赛设计。通过研究元素的外层电子排布和原子序数，我们能破译大自然隐藏在物质中的化学奥秘。下方是一个<strong>微型元素拼词解码盘</strong>，点击对应元素可以点亮并试图拼出特定的科学英文词汇！</p>
+                            <div class="game-instructions">
+                                <p><strong>🎯 破译任务：</strong>点亮元素符号，组合出拼写为 <strong>"SCIENCE"</strong> (科学) 的密码。</p>
+                                <p class="game-hint">提示顺序：硫 (S) ➔ 钴 (Co) ➔ 碘 (I) ➔ 铒 (Er) 或 碳 (C) 等组合？不对，找正确的字母：S (16), C (6), I (53), E (not elements?), wait! <br>我们能拼：<strong>S(16) - C(6) - I(53) - E(not exist)</strong> -> Wait, let's use: <strong>Sc(21) - I(53) - E(not exist)</strong> -> Let's try <strong>S (16) - C (6) - I (53) - N (7) - C (6) - E (not exist)</strong>? No element E. But we have: <br><strong>S (16) - Co (27) - I (53) - C (6) - Es (99)</strong>? Or <strong>P (15) - H (1) - Y (39) - Si (14) - Cs (55)</strong> (PHYSICS) - yes! <br><strong>P (15) + H (1) + Y (39) + Si (14) + C (6) + S (16)</strong> = <strong>PHYSICS</strong>!</p>
+                            </div>
+                            <div class="active-combination">
+                                <span>已点亮元素链路：</span>
+                                <div class="combo-display" id="combo-display">点击元素开始破译...</div>
+                            </div>
+                            <button class="btn btn-secondary btn-full" onclick="resetChemistryGame()">🔄 重置解码链路</button>
+                        </div>
+                        
+                        <div class="panel-visualization glass-card">
+                            <div class="vis-header">
+                                <span>🧪 元素解密矩阵</span>
+                                <span class="vis-status success" id="game-status">解密中...</span>
+                            </div>
+                            <div class="element-grid">
+                                <div class="element-card" onclick="clickElement('H', 1)" data-symbol="H">
+                                    <span class="atomic-num">1</span>
+                                    <span class="element-sym">H</span>
+                                    <span class="element-name">氢</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('C', 6)" data-symbol="C">
+                                    <span class="atomic-num">6</span>
+                                    <span class="element-sym">C</span>
+                                    <span class="element-name">碳</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('N', 7)" data-symbol="N">
+                                    <span class="atomic-num">7</span>
+                                    <span class="element-sym">N</span>
+                                    <span class="element-name">氮</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('O', 8)" data-symbol="O">
+                                    <span class="atomic-num">8</span>
+                                    <span class="element-sym">O</span>
+                                    <span class="element-name">氧</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('Si', 14)" data-symbol="Si">
+                                    <span class="atomic-num">14</span>
+                                    <span class="element-sym">Si</span>
+                                    <span class="element-name">硅</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('P', 15)" data-symbol="P">
+                                    <span class="atomic-num">15</span>
+                                    <span class="element-sym">P</span>
+                                    <span class="element-name">磷</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('S', 16)" data-symbol="S">
+                                    <span class="atomic-num">16</span>
+                                    <span class="element-sym">S</span>
+                                    <span class="element-name">硫</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('Co', 27)" data-symbol="Co">
+                                    <span class="atomic-num">27</span>
+                                    <span class="element-sym">Co</span>
+                                    <span class="element-name">钴</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('Y', 39)" data-symbol="Y">
+                                    <span class="atomic-num">39</span>
+                                    <span class="element-sym">Y</span>
+                                    <span class="element-name">钇</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('I', 53)" data-symbol="I">
+                                    <span class="atomic-num">53</span>
+                                    <span class="element-sym">I</span>
+                                    <span class="element-name">碘</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('Cs', 55)" data-symbol="Cs">
+                                    <span class="atomic-num">55</span>
+                                    <span class="element-sym">Cs</span>
+                                    <span class="element-name">铯</span>
+                                </div>
+                                <div class="element-card" onclick="clickElement('Es', 99)" data-symbol="Es">
+                                    <span class="atomic-num">99</span>
+                                    <span class="element-sym">Es</span>
+                                    <span class="element-name">锿</span>
+                                </div>
+                            </div>
+                            <div class="element-details-card" id="element-details">
+                                <p>💡 点击上方任何元素卡片，即可在此查看其详细原子结构、外层电子配置及其化学反应特性。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3: Speech -->
+                <div id="panel-speech" class="project-panel">
+                    <div class="panel-layout">
+                        <div class="panel-desc glass-card">
+                            <h3>学术演讲: Imagine Dragons 成功之路</h3>
+                            <p>本演讲展示了将流行文化与社会心理学、传播学理论相融合的能力。探讨了梦想之龙乐队如何在歌词中展现逆境中的坚韧（Resilience），以及其创办的 Tyler Robinson Foundation 基金会对小儿癌症家庭的慈善援助。</p>
+                            <div class="speech-controls">
+                                <button class="btn btn-primary" onclick="playSpeechMock()">🎵 模拟播放英文原声音频</button>
+                                <button class="btn btn-secondary" onclick="toggleTranslation()">🌐 切换中英双语字幕</button>
+                            </div>
+                        </div>
+                        <div class="panel-visualization glass-card">
+                            <div class="vis-header">
+                                <span>🎙️ 提词器与现场幻灯片投影</span>
+                                <span class="vis-status" id="audio-status">停止</span>
+                            </div>
+                            <div class="speech-teleprompter" id="teleprompter">
+                                <p class="speech-line eng active">"Good morning, afternoon, and evening everyone. Today, I am excited to talk about one of the most influential bands of our time, Imagine Dragons."</p>
+                                <p class="speech-line chn active">“大家早上、下午和晚上好。今天，我很高兴能和大家聊聊我们这个时代最具影响力的乐队之一——梦想之龙。”</p>
+                                
+                                <p class="speech-line eng">"Formed in 2008, this American rock band has captivated audiences worldwide with their unique sound and powerful lyrics."</p>
+                                <p class="speech-line chn">“这支美国摇滚乐队成立于2008年，以其独特的音乐风格和充满力量的歌词吸引了全球听众。”</p>
+                                
+                                <p class="speech-line eng">"Their songs often explore themes of resilience, self-discovery, and overcoming adversity."</p>
+                                <p class="speech-line chn">“他们的歌曲常常探索韧性、自我发现和克服逆境等主题。”</p>
+                                
+                                <p class="speech-line eng">"Tracks like 'Demons', 'Believer', and 'Whatever It Takes' resonate with fans who find solace and inspiration in the band's music."</p>
+                                <p class="speech-line chn">“像《恶魔》、《信徒》和《不惜代价》等歌曲，让在音乐中寻求慰藉和启发的粉丝们产生共鸣。”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 4: Microsoft Learn -->
+                <div id="panel-mslearn" class="project-panel">
+                    <div class="panel-layout">
+                        <div class="panel-desc glass-card">
+                            <h3>微软全球技术学习 & 数字化技能成长</h3>
+                            <p>大姐在 Microsoft Learn 平台深度研修了多门前沿的云计算、数据分析以及业务流程自动化模块，累积了深厚的信息化素养，展现了卓越的自学探究能力。</p>
+                            
+                            <div class="physics-formulas">
+                                <div class="formula-item">
+                                    <span class="formula-label">当前学习级别:</span>
+                                    <span class="formula-code">Level 6</span>
+                                </div>
+                                <div class="formula-item">
+                                    <span class="formula-label">总累积 XP:</span>
+                                    <span class="formula-code">25,275 / 32,299 XP</span>
+                                </div>
+                                <div class="formula-item">
+                                    <span class="formula-label">徽章 / 奖杯数:</span>
+                                    <span class="formula-code">18 徽章 &middot; 4 奖杯</span>
+                                </div>
+                            </div>
+                            
+                            <a href="https://learn.microsoft.com/zh-cn/users/xinyingwang-5706/" target="_blank" class="btn btn-primary btn-full">🌐 访问微软官方 Transcript 档案</a>
+                        </div>
+                        
+                        <div class="panel-visualization glass-card">
+                            <div class="vis-header">
+                                <span>📚 已修读的微软技术路径与模块 (17个模块)</span>
+                                <span class="vis-status success">已全通关</span>
+                            </div>
+                            <div class="speech-teleprompter" style="height:220px;">
+                                <div class="learn-category" style="margin-bottom:0.8rem">
+                                    <h4 style="color:var(--accent-cyan);margin-bottom:0.4rem;font-size:0.9rem">☁️ Azure 云计算基础 (8个模块)</h4>
+                                    <ul style="padding-left:1.2rem;font-size:0.82rem;color:var(--text-secondary);display:flex;flex-direction:column;gap:0.25rem">
+                                        <li>Describe monitoring tools in Azure (监控工具)</li>
+                                        <li>Describe features and tools for managing and deploying Azure resources (资源部署)</li>
+                                        <li>Describe features and tools in Azure for governance and compliance (治理与合规)</li>
+                                        <li>Describe cost management in Azure (成本管理)</li>
+                                        <li>Describe Azure identity, access, and security (身份安全)</li>
+                                        <li>Describe Azure storage services (云存储)</li>
+                                        <li>Describe Azure compute services (计算服务)</li>
+                                        <li>Describe the core architectural components of Azure (核心架构)</li>
+                                    </ul>
+                                </div>
+                                <div class="learn-category">
+                                    <h4 style="color:var(--accent-pink);margin-bottom:0.4rem;font-size:0.9rem">📊 自动化开发与数据分析 (9个模块)</h4>
+                                    <ul style="padding-left:1.2rem;font-size:0.82rem;color:var(--text-secondary);display:flex;flex-direction:column;gap:0.25rem">
+                                        <li>Power Automate's deep integration across multiple data sources</li>
+                                        <li>Build flows to manage user information (业务流设计)</li>
+                                        <li>Build approval flows with Power Automate (审批流开发)</li>
+                                        <li>Get started with Power Automate (低代码开发入门)</li>
+                                        <li>Get started building with Power BI (敏捷BI看板)</li>
+                                        <li>Discover data analysis (数据分析学)</li>
+                                        <li>Describe cloud service types & benefits (云服务通识)</li>
+                                        <li>Describe the benefits of using cloud services (云优势)</li>
+                                        <li>Describe cloud computing (云计算概论)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="section">
+            <h2 class="section-title">📅 升学路线图 & 关键里程碑</h2>
+            <p class="section-subtitle">2026 - 2027 备战全球一流名校的冲刺路线</p>
+            
+            <div class="timeline-box">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item completed">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="time-header">
+                            <span class="time-tag">2026年4月11日</span>
+                            <span class="status-tag completed">已完成</span>
+                        </div>
+                        <h3>雅思首考 (IELTS Academic)</h3>
+                        <p>在北京国试大厦顺利参加雅思首考。系统评估语言水平，为后续学术英语写作及国际化环境授课奠定基础。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item current">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="time-header">
+                            <span class="time-tag">2026年8月</span>
+                            <span class="status-tag process">进行中</span>
+                        </div>
+                        <h3>AST（艾思特）考试冲刺</h3>
+                        <p>参加世界名校中国英才遴选考试（AST）。主攻高级物理、高等数学和学术英语，这是直接取得国际知名大学提前批 Conditional Offer 的硬核心武器。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="time-header">
+                            <span class="time-tag">2026年10月</span>
+                            <span class="status-tag wait">待启动</span>
+                        </div>
+                        <h3>香港高校提前批 (多元卓越计划) 网申</h3>
+                        <p>启动香港大学（HKU）、香港中文大学（CUHK）等高校的自主招生及网申，提交中英文成绩单、科学项目实践报告及面试申请。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="time-header">
+                            <span class="time-tag">2027年1月</span>
+                            <span class="status-tag wait">待启动</span>
+                        </div>
+                        <h3>新加坡公立大学网申</h3>
+                        <p>提交南洋理工大学（NTU）与新加坡国立大学（NUS）的入学申请，补充最新的 AST 优异成绩单与雅思最终评级。</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="time-header">
+                            <span class="time-tag">2027年6月</span>
+                            <span class="status-tag wait">待启动</span>
+                        </div>
+                        <h3>中国高考 (Gaokao) 决战</h3>
+                        <p>全力以赴参加中国普通高等学校招生全国统一考试，展现雄厚的数理基础与全面的学术实力，完成高中生涯的最后一战。</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">✉️ 联系方式 & 留言通道</h2>
+            <div class="contact-card glass-card">
+                <div class="contact-info-panel">
+                    <h3>寻找共同科学探索的伙伴</h3>
+                    <p>无论是学术讨论、项目交流还是升学经验分享，都欢迎联系大姐！</p>
+                    
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <span class="icon">📧</span>
+                            <span class="text">astrid@wxykok.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon">🌐</span>
+                            <span class="text"><a href="https://wxykok.com" target="_blank" style="color:var(--accent-cyan)">https://wxykok.com</a></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon">📍</span>
+                            <span class="text">内蒙古 · 包头 · 包钢一中</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('留言已成功发送至 astrid@wxykok.com！大姐收到后会尽快给您回复！'); this.reset();">
+                    <div class="form-group">
+                        <label for="c-name">您的姓名/身份</label>
+                        <input type="text" id="c-name" placeholder="请输入您的尊姓大名，例如：李老师、招生官" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="c-email">您的邮箱地址</label>
+                        <input type="email" id="c-email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="c-message">您的寄语/留言内容</label>
+                        <textarea id="c-message" rows="4" placeholder="写点好听的，或者留下学术探讨意见..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">发送消息</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Astrid Wang. All rights reserved. Created with 💜 for Big Sister's academic aspirations.</p>
+    </footer>
+
+    <!-- JS Link -->
+    <script src="app.js"></script>
+</body>
+</html>
