@@ -57,6 +57,15 @@
                         <a href="#projects" class="btn btn-primary" onclick="showSection('projects')">查看科学项目</a>
                         <a href="https://wxykok.com" target="_blank" class="btn btn-secondary">访问学术网站 (wxykok.com)</a>
                     </div>
+                    <div class="github-quick-stats" style="margin-top: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+                        <span style="font-size: 0.82rem; color: var(--text-secondary);">💻 GitHub 实时动态:</span>
+                        <div class="stat-badge" style="background: rgba(255,255,255,0.05); padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid var(--border-light); font-size: 0.76rem; font-family: var(--font-mono);">
+                            🐈 Repos: <span id="gh-repos" style="color:var(--accent-cyan)">--</span>
+                        </div>
+                        <div class="stat-badge" style="background: rgba(255,255,255,0.05); padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid var(--border-light); font-size: 0.76rem; font-family: var(--font-mono);">
+                            ⚡ Followers: <span id="gh-followers" style="color:var(--accent-pink)">--</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -91,11 +100,13 @@
             <p class="section-subtitle">点击下方项目页签进行实时模拟与互动体验</p>
 
             <!-- Project Navigation Tabs -->
-            <div class="project-tabs">
+            <div class="project-tabs" style="flex-wrap: wrap;">
                 <button class="tab-btn active" onclick="switchProjectTab('coilgun')">⚡ 多级电磁发射装置</button>
                 <button class="tab-btn" onclick="switchProjectTab('chemistry')">🧪 元素周期表解码器</button>
                 <button class="tab-btn" onclick="switchProjectTab('speech')">🎤 梦想之龙英文演讲</button>
                 <button class="tab-btn" onclick="switchProjectTab('mslearn')">☁️ Microsoft Learn 学习轨迹</button>
+                <button class="tab-btn" onclick="switchProjectTab('arxiv')">📚 学术文献前沿雷达</button>
+                <button class="tab-btn" onclick="switchProjectTab('ast')">🎯 AST 录取计算器</button>
             </div>
 
             <!-- Project Contents -->
@@ -355,6 +366,101 @@
                                     </ul>
                                 </div>
                             </div>
+                    </div>
+                </div>
+
+                <!-- Panel 5: Arxiv Search Radar -->
+                <div id="panel-arxiv" class="project-panel">
+                    <div class="panel-layout">
+                        <div class="panel-desc glass-card">
+                            <h3>📚 学术文献前沿雷达</h3>
+                            <p>本组件实时连接至 <strong>OpenAlex / arXiv</strong> 全球开源学术文献数据库。通过拉取最新的前沿科学文献，辅助日常学术拓展与科研项目开题分析。</p>
+                            
+                            <div class="simulator-inputs">
+                                <div class="input-group full-width">
+                                    <label for="arxiv-query">检索关键词 (英文)</label>
+                                    <input type="text" id="arxiv-query" value="Electromagnetic Solenoid" placeholder="例如: Perovskite, Coilgun...">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-full" onclick="searchAcademicPapers()">📡 扫描全球学术数据库</button>
+                            
+                            <div class="presets-box" style="margin-top:0.8rem">
+                                <span style="font-size:0.75rem;color:var(--text-muted)">热门预设主题：</span>
+                                <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.3rem">
+                                    <button class="btn btn-secondary" style="padding:0.25rem 0.6rem;font-size:0.75rem;border-radius:4px" onclick="setArxivQuery('Electromagnetic Coilgun')">电磁加速</button>
+                                    <button class="btn btn-secondary" style="padding:0.25rem 0.6rem;font-size:0.75rem;border-radius:4px" onclick="setArxivQuery('Perovskite Solar Cells')">钙钛矿太阳能</button>
+                                    <button class="btn btn-secondary" style="padding:0.25rem 0.6rem;font-size:0.75rem;border-radius:4px" onclick="setArxivQuery('Low-code Automation')">低代码流程自动化</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-visualization glass-card">
+                            <div class="vis-header">
+                                <span>📖 实时科研论文检索结果 (TOP 3)</span>
+                                <span class="vis-status success" id="arxiv-status">空闲</span>
+                            </div>
+                            <div class="speech-teleprompter" id="arxiv-results" style="height:230px;font-size:0.85rem;gap:1rem;">
+                                <p style="color:var(--text-muted);text-align:center;margin-top:4rem">请输入关键词或选择预设主题，点击上方“扫描”按钮实时拉取学术档案。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 6: AST Calculator -->
+                <div id="panel-ast" class="project-panel">
+                    <div class="panel-layout">
+                        <div class="panel-desc glass-card">
+                            <h3>🎯 AST 录取匹配度计算器</h3>
+                            <p>艾思特（AST）考试是世界名校遴选中国英才的重要参考。选择您的目标名校，拖动模拟分数滑块，系统会基于各大名校往年录取线与学科权重，实时测算录取匹配指数。</p>
+                            
+                            <div class="simulator-inputs" style="grid-template-columns:1fr">
+                                <div class="input-group">
+                                    <label for="ast-school">目标高校</label>
+                                    <select id="ast-school" onchange="calculateASTFit()">
+                                        <option value="cambridge">剑桥大学 (University of Cambridge)</option>
+                                        <option value="ntu" selected>南洋理工大学 (NTU) - 科学与工程学院</option>
+                                        <option value="nus">新加坡国立大学 (NUS)</option>
+                                        <option value="hku">香港大学 (HKU) - 工学院</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <div style="display:flex;justify-content:space-between">
+                                        <label for="ast-math">AST 数学 (模拟分):</label>
+                                        <span id="val-ast-math" style="color:var(--accent-cyan);font-family:var(--font-mono)">220</span>
+                                    </div>
+                                    <input type="range" id="ast-math" min="120" max="300" value="220" oninput="updateASTSliderVal('math');calculateASTFit()">
+                                </div>
+                                <div class="input-group">
+                                    <div style="display:flex;justify-content:space-between">
+                                        <label for="ast-physics">AST 物理 (模拟分):</label>
+                                        <span id="val-ast-physics" style="color:var(--accent-cyan);font-family:var(--font-mono)">230</span>
+                                    </div>
+                                    <input type="range" id="ast-physics" min="120" max="300" value="230" oninput="updateASTSliderVal('physics');calculateASTFit()">
+                                </div>
+                                <div class="input-group">
+                                    <div style="display:flex;justify-content:space-between">
+                                        <label for="ast-english">AST 英语 (模拟分):</label>
+                                        <span id="val-ast-english" style="color:var(--accent-cyan);font-family:var(--font-mono)">210</span>
+                                    </div>
+                                    <input type="range" id="ast-english" min="120" max="300" value="210" oninput="updateASTSliderVal('english');calculateASTFit()">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-visualization glass-card">
+                            <div class="vis-header">
+                                <span>📊 录取概算测成看板</span>
+                                <span class="vis-status success" id="ast-status">就绪</span>
+                            </div>
+                            <div class="telemetry-grid" style="grid-template-columns:1fr; gap:0.8rem">
+                                <div class="telemetry-card" style="align-items:center;padding:1.5rem 1rem">
+                                    <span class="tel-label">🎯 录取匹配指数</span>
+                                    <span class="tel-val" id="ast-fit-percentage" style="font-size:2.8rem;background:linear-gradient(135deg,var(--accent-cyan),var(--accent-pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent">85%</span>
+                                </div>
+                            </div>
+                            <div class="element-details-card" id="ast-advice" style="min-height:110px">
+                                正在匹配中...
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -481,6 +587,35 @@
     <footer class="footer">
         <p>&copy; 2026 Astrid Wang. All rights reserved. Created with 💜 for Big Sister's academic aspirations.</p>
     </footer>
+
+    <!-- Floating AI Chatbot -->
+    <div class="ai-chat-widget" id="ai-widget">
+        <button class="ai-chat-btn" onclick="toggleChatWindow()">
+            <span class="chat-icon">🤖</span>
+            <span class="chat-label">大姐的 AI 学术助手</span>
+        </button>
+        <div class="ai-chat-window glass-card" id="chat-window">
+            <div class="chat-header">
+                <span>🤖 Astrid Wang AI Study Companion</span>
+                <button class="close-chat-btn" onclick="toggleChatWindow()">×</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="chat-msg bot">
+                    <p>你好！我是大姐的 AI 学术伴读助手。我可以向您介绍大姐的物理电磁炮项目、化学元素周期表大赛、雅思/AST 冲刺进度等。请问您想了解什么？</p>
+                </div>
+            </div>
+            <div class="chat-suggested-questions">
+                <button onclick="askPresetQuestion('1')">⚡ 电磁发射器是怎么做的？</button>
+                <button onclick="askPresetQuestion('2')">🧪 大姐的化学周期表竞赛细节？</button>
+                <button onclick="askPresetQuestion('3')">📈 她的港大/南洋理工升学时间线？</button>
+                <button onclick="askPresetQuestion('4')">☁️ 她的微软学习记录如何？</button>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input" placeholder="输入学术探讨问题..." onkeydown="if(event.key === 'Enter') sendUserChatMessage()">
+                <button class="btn btn-primary" style="padding:0.4rem 0.8rem;border-radius:4px" onclick="sendUserChatMessage()">发送</button>
+            </div>
+        </div>
+    </div>
 
     <!-- JS Link -->
     <script src="app.js"></script>
