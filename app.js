@@ -507,9 +507,192 @@ function appendChatMessage(text, sender) {
 }
 
 
+// --- Project 8: 3D Printing Simulator Engine ---
+const modelData = {
+    'reactor': {
+        name: '反应堆夜灯 (Arc Reactor Nightlight)',
+        img: 'assets/project_3dprint_reactor.jpg',
+        baseTime: 12.5, // base hours
+        baseWeight: 120, // base grams
+        postDifficulty: '中等'
+    },
+    'bookmark': {
+        name: '小黄人书签 (Minion Bookmark)',
+        img: 'assets/project_3dprint_bookmark.jpg',
+        baseTime: 1.2,
+        baseWeight: 14,
+        postDifficulty: '低'
+    },
+    'batmobile': {
+        name: '蝙蝠侠战车鼠标 (Batmobile Mouse)',
+        img: 'assets/project_3dprint_batmobile.jpg',
+        baseTime: 16.0,
+        baseWeight: 175,
+        postDifficulty: '高'
+    },
+    'ironman': {
+        name: '钢铁侠饰品收纳神器 (Iron Man Organizer)',
+        img: 'assets/project_3dprint_ironman.jpg',
+        baseTime: 8.5,
+        baseWeight: 90,
+        postDifficulty: '高'
+    },
+    'shower': {
+        name: '环形防溅沐浴喷头 (Shower Nozzle)',
+        img: 'assets/project_3dprint_shower.jpg',
+        baseTime: 4.2,
+        baseWeight: 45,
+        postDifficulty: '极低'
+    }
+};
+
+const materialPricing = {
+    'PLA': { costPerGram: 0.16, densityMultiplier: 1.0, qualityName: '精细 (0.2mm标准层纹)' },
+    'Resin': { costPerGram: 0.45, densityMultiplier: 1.15, qualityName: '超精细 (液态光固化微米级)' },
+    'PETG': { costPerGram: 0.22, densityMultiplier: 1.05, qualityName: '精细 (工业级高抗冲击)' }
+};
+
+const postProcessingData = {
+    'raw': { cost: 0, qualityText: '（素材表面）' },
+    'sanded': { cost: 12, qualityText: '（手工磨砂光滑）' },
+    'painted': { cost: 40, qualityText: '（艺术喷漆涂装成品级）' }
+};
+
+function update3DPrintModel() {
+    const selectedModel = document.getElementById('print-model').value;
+    const model = modelData[selectedModel];
+    if (!model) return;
+    
+    // Update preview image
+    const imgEl = document.getElementById('print-model-img');
+    imgEl.src = model.img;
+    imgEl.alt = model.name;
+    
+    update3DPrintParams();
+}
+
+function update3DPrintParams() {
+    const selectedModel = document.getElementById('print-model').value;
+    const material = document.getElementById('print-material').value;
+    const postProcess = document.getElementById('post-process').value;
+    const infill = parseInt(document.getElementById('infill-density').value);
+    const layerHeight = parseInt(document.getElementById('layer-height').value) / 100; // in mm
+
+    // Update Slider text representation
+    document.getElementById('val-infill-density').innerText = `${infill}%`;
+    document.getElementById('val-layer-height').innerText = `${layerHeight.toFixed(2)} mm`;
+
+    const model = modelData[selectedModel];
+    const mat = materialPricing[material];
+    const post = postProcessingData[postProcess];
+    if (!model || !mat || !post) return;
+
+    // Calculate math variables
+    // Infill multiplier: 0.3 + 0.7 * (infill / 100)
+    const infillFactor = 0.3 + 0.7 * (infill / 100);
+    const weight = model.baseWeight * infillFactor * mat.densityMultiplier;
+
+    // Layer height multiplier: 0.2mm is standard. Smaller layer height = more layers = longer time
+    const layerFactor = 0.20 / layerHeight;
+    const time = model.baseTime * infillFactor * layerFactor;
+
+    // Cost: material weight cost + post process cost + wear & power cost (¥0.5 per hour)
+    const cost = (weight * mat.costPerGram) + post.cost + (time * 0.6);
+
+    // Dynamic output updates
+    document.getElementById('telemetry-print-weight').innerText = `${weight.toFixed(1)} g`;
+    document.getElementById('telemetry-print-time').innerText = formatPrintTime(time);
+    document.getElementById('telemetry-print-cost').innerText = `¥ ${cost.toFixed(2)}`;
+
+    // Quality determination text
+    let resolutionText = mat.qualityName;
+    if (postProcess === 'sanded') {
+        resolutionText = '光滑 ' + post.qualityText;
+    } else if (postProcess === 'painted') {
+        resolutionText = '完美 ' + post.qualityText;
+    }
+    document.getElementById('telemetry-print-resolution').innerText = resolutionText;
+}
+
+function formatPrintTime(hours) {
+    const h = Math.floor(hours);
+    const m = Math.round((hours - h) * 60);
+    if (h === 0) return `${m} 分钟`;
+    return `${h} 小时 ${m} 分钟`;
+}
+
+let isPrintingSim = false;
+function start3DPrintSimulation() {
+    if (isPrintingSim) return;
+    isPrintingSim = true;
+
+    const statusEl = document.getElementById('print-status');
+    const overlayEl = document.getElementById('print-layer-overlay');
+    const pctEl = document.getElementById('print-percentage-overlay');
+    const containerEl = document.querySelector('.print-preview-container');
+
+    statusEl.innerText = "📁 切片并生成 G-code 中...";
+    statusEl.className = "vis-status";
+    pctEl.style.display = "block";
+    pctEl.innerText = "0%";
+    overlayEl.style.height = "0%";
+    containerEl.classList.add('printing-active');
+
+    setTimeout(() => {
+        statusEl.innerText = "🖨️ 正在模拟打印首层...";
+        statusEl.className = "vis-status success";
+
+        let progress = 0;
+        const printInterval = setInterval(() => {
+            progress += 2;
+            pctEl.innerText = `${progress}%`;
+            overlayEl.style.height = `${progress}%`;
+
+            if (progress % 20 === 0 && progress < 100) {
+                statusEl.innerText = `🖨️ 正在模拟打印 (${progress}%)...`;
+            }
+
+            if (progress >= 100) {
+                clearInterval(printInterval);
+                statusEl.innerText = "🎉 打印完成！实体成果已呈现";
+                statusEl.className = "vis-status success";
+                pctEl.style.display = "none";
+                overlayEl.style.height = "0%";
+                containerEl.classList.remove('printing-active');
+                isPrintingSim = false;
+                
+                const selectedModel = document.getElementById('print-model').value;
+                const model = modelData[selectedModel];
+                alert(`恭喜！3D打印机切片仿真完成，成功“造出”了大姐的实体文创作品「${model.name}」！您可以随时切换其他造物原型进行研究。`);
+            }
+        }, 60);
+    }, 1200);
+}
+
+// --- Project 9: Lightbox Modal Controls for Certificates ---
+function openHonorModal(imgName, title, desc) {
+    const modal = document.getElementById('honor-modal');
+    const modalImg = document.getElementById('honor-modal-img');
+    const modalTitle = document.getElementById('honor-modal-title');
+    const modalDesc = document.getElementById('honor-modal-desc');
+
+    modalImg.src = `assets/${imgName}`;
+    modalTitle.innerText = title;
+    modalDesc.innerText = desc;
+    modal.style.display = 'flex';
+}
+
+function closeHonorModal() {
+    const modal = document.getElementById('honor-modal');
+    modal.style.display = 'none';
+}
+
+
 // --- Dom Initialization ---
 document.addEventListener("DOMContentLoaded", () => {
     fetchGitHubProfile();
     calculateASTFit();
+    update3DPrintParams();
 });
+
 

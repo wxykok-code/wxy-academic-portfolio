@@ -50,6 +50,8 @@
                 <div class="hero-right">
                     <h1 class="main-title">王馨莹 <span class="accent-text">Astrid Wang</span></h1>
                     <p class="school-info">🏫 包头市第九十五中学 / 包钢一中 · 高三（2412班）</p>
+                    <p class="motto-text" style="font-family: var(--font-display); font-style: italic; color: var(--accent-cyan); font-weight: 500; font-size: 1.05rem; margin-bottom: 0.8rem; letter-spacing: 1px;">“ 光而不耀，静水流深 ”</p>
+                    <p class="career-text" style="font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 1rem;">🎯 <strong>未来方向</strong>：AI 算法与低代码开发 / 飞行器总体设计与轨道动力学</p>
                     <p class="bio-intro">
                         你好！我是王馨莹。我是一个对物理、化学与电子工程充满热情的学习与探索者。我喜欢将课本上的公式在现实中转化为可运行的物理实体，也喜欢用代码模拟复杂的科学过程。目前，我正在全力备战 <strong>AST（艾思特考试）</strong> 以及 <strong>雅思（IELTS）</strong>，目标是冲刺香港大学（HKU）、新加坡国立大学（NUS）和南洋理工大学（NTU）等世界一流名校。
                     </p>
@@ -92,7 +94,106 @@
                     <p>已获 25,275 XP 积分，解锁 18 个徽章和 4 个奖杯。主攻 Azure 云计算及 Power Platform 自动化开发。</p>
                 </div>
             </div>
+
+            <!-- Honors & Volunteer Services Wall -->
+            <div class="honors-title-block" style="margin-top: 4rem; margin-bottom: 2rem; text-align: center;">
+                <h2 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center;">🏆 个人荣誉与社区志愿服务</h2>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">在学术、艺术、社会服务中践行多元化发展</p>
+            </div>
+            
+            <div class="honors-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <!-- Certificate 1: Physics -->
+                <div class="honor-card glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; position: relative; overflow: hidden; cursor: pointer;" onclick="openHonorModal('cert_physics.jpg', '第40届全国中学生物理竞赛奖状', '在第40届全国中学生物理竞赛中，展现了扎实的物理学功底与数理推导能力，荣获内蒙古赛区荣誉。')">
+                    <div class="honor-img-wrapper" style="height: 160px; border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light);">
+                        <img src="assets/cert_physics.jpg" alt="物理竞赛奖状" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth);">
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-cyan); font-weight: 600;">物理学科 / 学术竞赛</span>
+                        <span style="font-size: 0.72rem; background: rgba(0, 242, 254, 0.1); color: var(--accent-cyan); padding: 0.1rem 0.4rem; border-radius: 4px;">省二等奖</span>
+                    </div>
+                    <h4 style="color: #fff; font-size: 1.05rem;">第40届全国中学生物理竞赛</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">全国中学生物理竞赛（内蒙古赛区）二等奖，体现出卓越的电磁学与经典力学解题及实验思维。</p>
+                </div>
+
+                <!-- Certificate 2: IELTS -->
+                <div class="honor-card glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; position: relative; overflow: hidden; cursor: pointer;" onclick="openHonorModal('cert_ielts.png', '雅思学术类首考成绩单', '于北京国试大厦完成雅思首考，听力与阅读表现优异，取得满足港大/新加坡公立大学申请的高分段。')">
+                    <div class="honor-img-wrapper" style="height: 160px; border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light);">
+                        <img src="assets/cert_ielts.png" alt="雅思成绩单" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth);">
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-pink); font-weight: 600;">英语语言 / 国际认可</span>
+                        <span style="font-size: 0.72rem; background: rgba(225, 0, 255, 0.1); color: var(--accent-pink); padding: 0.1rem 0.4rem; border-radius: 4px;">雅思通过</span>
+                    </div>
+                    <h4 style="color: #fff; font-size: 1.05rem;">IELTS 雅思学术类首考通关</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">具备流畅的国际化学术沟通能力，听力与阅读基础坚实，为海外名校申请奠定坚实的语言基石。</p>
+                </div>
+
+                <!-- Certificate 3: English competition Semifinal -->
+                <div class="honor-card glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; position: relative; overflow: hidden; cursor: pointer;" onclick="openHonorModal('cert_english_semifinal.png', '外研社国才杯全国中学生英语素养大赛复赛', '在外研社·国才杯全国中学生英语素养大赛（内蒙古赛区）复赛中表现出色，荣获省级一等奖。')">
+                    <div class="honor-img-wrapper" style="height: 160px; border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light);">
+                        <img src="assets/cert_english_semifinal.png" alt="英语素养大赛复赛" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth);">
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-blue); font-weight: 600;">外语竞赛 / 学术演讲</span>
+                        <span style="font-size: 0.72rem; background: rgba(79, 172, 254, 0.1); color: var(--accent-blue); padding: 0.1rem 0.4rem; border-radius: 4px;">省一等奖</span>
+                    </div>
+                    <h4 style="color: #fff; font-size: 1.05rem;">外研社·国才杯英语大赛复赛</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">荣获内蒙古赛区一等奖，展示出优秀的英语公共表达、跨文化交际与批判性思维能力。</p>
+                </div>
+
+                <!-- Certificate 4: Volunteer service kindergarten -->
+                <div class="honor-card glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; position: relative; overflow: hidden; cursor: pointer;" onclick="openHonorModal('cert_volunteer_star.jpg', '爱心志愿助教之星 & 绘本优秀助教', '于包钢幼教管理处第十二幼儿园进行长期爱心支教志愿服务，先后担任绘本故事讲述助教、绘本剧创编助教、科学实验辅导助教。')">
+                    <div class="honor-img-wrapper" style="height: 160px; border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light);">
+                        <img src="assets/cert_volunteer_star.jpg" alt="工作杰出助教" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth);">
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-family: var(--font-mono); font-size: 0.76rem; color: #10b981; font-weight: 600;">社会实践 / 公益助教</span>
+                        <span style="font-size: 0.72rem; background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 0.1rem 0.4rem; border-radius: 4px;">荣誉称号</span>
+                    </div>
+                    <h4 style="color: #fff; font-size: 1.05rem;">包钢幼教十二园绘本与科学助教</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">荣获“绘本故事讲述优秀助教”、“绘本剧创编优秀助教”、“科学实验优秀指导助教”等多项荣誉，体现极强的社会责任感与跨年龄沟通能力。</p>
+                </div>
+                
+                <!-- Certificate 5: Community volunteer -->
+                <div class="honor-card glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; position: relative; overflow: hidden; cursor: pointer;" onclick="openHonorModal('cert_volunteer_community.jpg', '社区志愿者服务证书', '感谢积极参与昆都仑区少先路街道友谊小区第二社区2024年度第三、四季度志愿者服务活动，为基层民生服务奉献青年志愿者力量。')">
+                    <div class="honor-img-wrapper" style="height: 160px; border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light);">
+                        <img src="assets/cert_volunteer_community.jpg" alt="社区优秀志愿者" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth);">
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-family: var(--font-mono); font-size: 0.76rem; color: #10b981; font-weight: 600;">社区服务 / 社会实践</span>
+                        <span style="font-size: 0.72rem; background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 0.1rem 0.4rem; border-radius: 4px;">积极贡献</span>
+                    </div>
+                    <h4 style="color: #fff; font-size: 1.05rem;">少先路街道社区优秀志愿者</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">常年参与社区垃圾分类宣传、困难人群慰问、公共秩序维护等少先路街道社会实践工作，用奉献谱写担当。</p>
+                </div>
+
+                <!-- Certificate 6: Military student & Arts -->
+                <div class="honor-card glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; position: relative; overflow: hidden; cursor: pointer;" onclick="openHonorModal('cert_military_student.jpg', '军训优秀学员 & 艺术/体育特长', '在校军训中因表现突出被评为优秀学员；自幼研修钢琴，已获得艺术水平钢琴十级证书。')">
+                    <div class="honor-img-wrapper" style="height: 160px; border-radius: 8px; overflow: hidden; background: rgba(0,0,0,0.2); border: 1px solid var(--border-light);">
+                        <img src="assets/cert_military_student.jpg" alt="优秀军训学员与艺术证书" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition-smooth);">
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--accent-purple); font-weight: 600;">素养修身 / 艺体全面</span>
+                        <span style="font-size: 0.72rem; background: rgba(127, 0, 255, 0.1); color: var(--accent-purple); padding: 0.1rem 0.4rem; border-radius: 4px;">优秀/十级</span>
+                    </div>
+                    <h4 style="color: #fff; font-size: 1.05rem;">军训优秀学员 & 钢琴十级</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">极富毅力与自我约束力，在艰苦军训中脱颖而出；在黑白键间打磨艺术审美，坚韧执着，五育并举。</p>
+                </div>
+            </div>
+
+            <!-- Lightbox Modal for Certificate Preview -->
+            <div id="honor-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(10, 14, 23, 0.95); z-index: 99999; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(10px);">
+                <div class="glass-card" style="position: relative; max-width: 700px; width: 100%; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; border-color: rgba(255,255,255,0.15);">
+                    <button onclick="closeHonorModal()" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #fff; font-size: 2rem; cursor: pointer; line-height: 1;">&times;</button>
+                    <div style="max-height: 70vh; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-light); display: flex; justify-content: center; background: #000;">
+                        <img id="honor-modal-img" src="" alt="Honor Certificate" style="max-width: 100%; max-height: 60vh; object-fit: contain;">
+                    </div>
+                    <h3 id="honor-modal-title" style="color: #fff; font-size: 1.3rem;">证书名称</h3>
+                    <p id="honor-modal-desc" style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5;"></p>
+                </div>
+            </div>
         </section>
+
 
         <!-- Projects Section -->
         <section id="projects" class="section">
@@ -102,6 +203,7 @@
             <!-- Project Navigation Tabs -->
             <div class="project-tabs" style="flex-wrap: wrap;">
                 <button class="tab-btn active" onclick="switchProjectTab('coilgun')">⚡ 多级电磁发射装置</button>
+                <button class="tab-btn" onclick="switchProjectTab('3dprint')">🖨️ 3D打印创客工坊</button>
                 <button class="tab-btn" onclick="switchProjectTab('chemistry')">🧪 元素周期表解码器</button>
                 <button class="tab-btn" onclick="switchProjectTab('speech')">🎤 梦想之龙英文演讲</button>
                 <button class="tab-btn" onclick="switchProjectTab('mslearn')">☁️ Microsoft Learn 学习轨迹</button>
@@ -177,6 +279,95 @@
                                 <div class="telemetry-card">
                                     <span class="tel-label">预计出膛速度</span>
                                     <span class="tel-val" id="telemetry-velocity">14.1 m/s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel: 3D Printing -->
+                <div id="panel-3dprint" class="project-panel">
+                    <div class="panel-layout">
+                        <div class="panel-desc glass-card">
+                            <h3>3D打印技术与手办文创制作的融合应用</h3>
+                            <p>结合高中通用技术与个性化文创设计。探究涵盖了从 3D 建模、切片参数调整到后期打磨上色组装的完整流程。项目对比了不同耗材（PLA、树脂、PETG）的力学表现与工艺成本，实现“指尖造物”的数字化智造理念。</p>
+                            
+                            <div class="simulator-inputs" style="grid-template-columns: 1fr;">
+                                <div class="input-group">
+                                    <label for="print-model">选择造物原型 (实时展示大姐的实体作品)</label>
+                                    <select id="print-model" onchange="update3DPrintModel()">
+                                        <option value="reactor" selected>☢️ 反应堆夜灯 (Arc Reactor Light)</option>
+                                        <option value="bookmark">🐱 小黄人书签 (Minion Bookmark)</option>
+                                        <option value="batmobile">🦇 蝙蝠侠战车鼠标 (Batmobile Mouse)</option>
+                                        <option value="ironman">🛡️ 钢铁侠饰品收纳神器 (Iron Man Organizer)</option>
+                                        <option value="shower">🚿 环形防溅沐浴喷头 (Shower Nozzle)</option>
+                                    </select>
+                                </div>
+                                <div class="simulator-inputs" style="grid-template-columns: repeat(2, 1fr); margin-top: 0.5rem; gap: 1rem;">
+                                    <div class="input-group">
+                                        <label for="print-material">打印耗材</label>
+                                        <select id="print-material" onchange="update3DPrintParams()">
+                                            <option value="PLA">PLA 环保塑料 (通用)</option>
+                                            <option value="Resin">树脂 Resin (高光固化高精度)</option>
+                                            <option value="PETG">PETG 韧性耗材 (高强度)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="post-process">后处理工艺</label>
+                                        <select id="post-process" onchange="update3DPrintParams()">
+                                            <option value="raw">原色未处理 (Raw)</option>
+                                            <option value="sanded">手工打磨抛光 (Sanded)</option>
+                                            <option value="painted">喷水补土+手工上色 (Painted)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="input-group" style="margin-top: 0.5rem;">
+                                    <div style="display:flex;justify-content:space-between">
+                                        <label for="infill-density">填充率 Infill Density:</label>
+                                        <span id="val-infill-density" style="color:var(--accent-cyan);font-family:var(--font-mono)">20%</span>
+                                    </div>
+                                    <input type="range" id="infill-density" min="10" max="100" value="20" step="5" oninput="update3DPrintParams()">
+                                </div>
+                                <div class="input-group" style="margin-top: 0.5rem;">
+                                    <div style="display:flex;justify-content:space-between">
+                                        <label for="layer-height">层高 Layer Height:</label>
+                                        <span id="val-layer-height" style="color:var(--accent-cyan);font-family:var(--font-mono)">0.20 mm</span>
+                                    </div>
+                                    <input type="range" id="layer-height" min="5" max="30" value="20" step="5" oninput="update3DPrintParams()">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-full" style="margin-top: 0.8rem;" onclick="start3DPrintSimulation()">🖨️ 开启数字切片与打印仿真</button>
+                        </div>
+                        
+                        <div class="panel-visualization glass-card">
+                            <div class="vis-header">
+                                <span>🛠️ 切片估算与实体成果展</span>
+                                <span class="vis-status" id="print-status">准备就绪</span>
+                            </div>
+                            
+                            <!-- Dynamic real photo display of selected model -->
+                            <div class="print-preview-container" style="position: relative; height: 180px; background: #060911; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                                <img id="print-model-img" src="assets/project_3dprint_reactor.jpg" alt="Model Result" style="width: 100%; height: 100%; object-fit: contain; transition: var(--transition-smooth); display: block;">
+                                <div id="print-layer-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(to top, rgba(0, 242, 254, 0.45), transparent); transition: none; pointer-events: none; border-top: 2px solid var(--accent-cyan); box-shadow: 0 0 15px var(--accent-cyan);"></div>
+                                <div id="print-percentage-overlay" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); display: none;">0%</div>
+                            </div>
+
+                            <div class="telemetry-grid">
+                                <div class="telemetry-card">
+                                    <span class="tel-label">估算耗时</span>
+                                    <span class="tel-val" id="telemetry-print-time">--</span>
+                                </div>
+                                <div class="telemetry-card">
+                                    <span class="tel-label">材料消耗</span>
+                                    <span class="tel-val" id="telemetry-print-weight">--</span>
+                                </div>
+                                <div class="telemetry-card">
+                                    <span class="tel-label">综合表面精度</span>
+                                    <span class="tel-val" id="telemetry-print-resolution">--</span>
+                                </div>
+                                <div class="telemetry-card">
+                                    <span class="tel-label">制造成本评估</span>
+                                    <span class="tel-val" id="telemetry-print-cost">--</span>
                                 </div>
                             </div>
                         </div>
