@@ -422,90 +422,172 @@ function fetchGitHubProfile() {
 }
 
 
-// --- Project 7: Floating AI Chatbot Dialogues ---
-function toggleChatWindow() {
-    document.getElementById('chat-window').classList.toggle('open');
-}
+// --- Project 7: Multi-Language Switcher Engine (i18n) ---
+let currentLang = 'zh';
 
-const botReplies = {
-    '1': "⚡ **多级电磁发射装置（电磁炮）** 是大姐独立动手研制的物理实验套件！它的电容器能够充电到最高 450V 的脉冲高压，触发时产生极强的安培力，将铁磁性弹丸瞬间以极高初速度推出。项目深入探究了法拉第电磁感应定律与楞次定律的应用，在网页的“科学实践-多级电磁发射装置”选项卡中您可以直接调整参数进行仿真试射哦！",
-    '2': "🧪 在高二年级举办的 **“解构元素密码 · 绘制周期新篇”** 大赛中，大姐凭借对过渡金属外层电子轨道排布的深刻理解获得了竞赛大奖！网页中的“元素周期表解码器”就是由这一灵感设计而来的，试着点击 P, H, Y, Si, Cs 组合拼出「PHYSICS」看看？",
-    '3': "📈 **大姐的升学规划** 非常明确和扎实：已在 2026 年 4 月通过雅思首考，目前正全力冲刺 2026 年 8 月的 AST（艾思特）考试，争取在 10 月份启动香港大学和香港中文大学的提前批申请，并在 2027 年 1 月申报新加坡南洋理工（NTU）和国立大学（NUS）！",
-    '4': "☁️ 大姐目前已通关了 **17 个微软官方 Learn 技术路径模块**，斩获 **Level 6** 评级，积累了 25,275 XP。她的学习方向涵盖 Azure 云存储、云主机资源分配、Power Automate 业务审批流构建以及 Power BI 商业智能数据分析等，具有极强的数字化技能！"
+const i18n = {
+    'zh': {
+        // NAV
+        'nav-about': '关于我',
+        'nav-projects': '科学实践',
+        'nav-timeline': '升学规划',
+        'nav-contact': '联系大姐',
+        // TABS
+        'tab-coilgun': '⚡ 多级电磁发射装置',
+        'tab-3dprint': '🖨️ 3D打印创客工坊',
+        'tab-chemistry': '🧪 元素周期表解码器',
+        'tab-speech': '🎤 梦想之龙英文演讲',
+        'tab-mslearn': '☁️ Microsoft Learn 学习轨迹',
+        'tab-arxiv': '📚 全球前沿与科研资讯雷达',
+        'tab-ast': '🎯 AST 录取计算器',
+        // CONTACT CARDS
+        'contact-sec-title': '✉️ 联系方式',
+        'c-card-email-h': '官方学术邮箱',
+        'c-card-email-d': '一键拉起邮箱，与大姐开展学术探讨',
+        'c-card-site-h': '官方学术站',
+        'c-card-site-d': '浏览大姐的个人学术与升学展示空间',
+        'c-card-git-h': 'GitHub 开源库',
+        'c-card-git-d': '查看大姐的物理模拟与数字化代码库',
+        'c-card-loc-h': '地理位置',
+        'c-card-loc-v': '内蒙古 · 包头 / 包钢一中',
+        'c-card-loc-d': '大姐目前就读的学校与日常研学基地',
+        'footer-text': '&copy; 2026 Astrid Wang. All rights reserved. Created with 💜 for Big Sister\'s academic aspirations.'
+    },
+    'zh-tw': {
+        // NAV
+        'nav-about': '關於我',
+        'nav-projects': '科學實踐',
+        'nav-timeline': '升學規劃',
+        'nav-contact': '聯絡大姐',
+        // TABS
+        'tab-coilgun': '⚡ 多級電磁發射裝置',
+        'tab-3dprint': '🖨️ 3D打印創客工坊',
+        'tab-chemistry': '🧪 元素週期表解碼器',
+        'tab-speech': '🎤 夢想之龍英文演講',
+        'tab-mslearn': '☁️ Microsoft Learn 學習軌跡',
+        'tab-arxiv': '📚 全球前沿與科研資訊雷達',
+        'tab-ast': '🎯 AST 錄取計算器',
+        // CONTACT CARDS
+        'contact-sec-title': '✉️ 聯絡方式',
+        'c-card-email-h': '官方學術郵箱',
+        'c-card-email-d': '一鍵拉起郵箱，與大姐開展學術探討',
+        'c-card-site-h': '官方學術站',
+        'c-card-site-d': '瀏覽大姐的個人學術與升學展示空間',
+        'c-card-git-h': 'GitHub 開源庫',
+        'c-card-git-d': '查看大姐的物理模擬與數位化代碼庫',
+        'c-card-loc-h': '地理位置',
+        'c-card-loc-v': '內蒙古 · 包頭 / 包鋼一中',
+        'c-card-loc-d': '大姐目前就讀的學校與日常研學基地',
+        'footer-text': '&copy; 2026 Astrid Wang. All rights reserved. Created with 💜 for Big Sister\'s academic aspirations.'
+    },
+    'en': {
+        // NAV
+        'nav-about': 'About Me',
+        'nav-projects': 'Research',
+        'nav-timeline': 'Milestones',
+        'nav-contact': 'Contact',
+        // TABS
+        'tab-coilgun': '⚡ Electromagnetic Launcher',
+        'tab-3dprint': '🖨️ 3D Printing Workshop',
+        'tab-chemistry': '🧪 Periodic Table Decoder',
+        'tab-speech': '🎤 Imagine Dragons Speech',
+        'tab-mslearn': '☁️ Microsoft Learn Transcript',
+        'tab-arxiv': '📚 Global Info & Research Radar',
+        'tab-ast': '🎯 AST Admissions Calculator',
+        // CONTACT CARDS
+        'contact-sec-title': '✉️ Contact',
+        'c-card-email-h': 'Academic Email',
+        'c-card-email-d': 'Launch mail client to discuss academic topics with Astrid',
+        'c-card-site-h': 'Academic Site',
+        'c-card-site-d': 'Visit Astrid\'s personal academic and admissions showcase portal',
+        'c-card-git-h': 'GitHub Repo',
+        'c-card-git-d': 'View Astrid\'s open-source physics simulations and codebases',
+        'c-card-loc-h': 'Location',
+        'c-card-loc-v': 'Baotou, Inner Mongolia / Baogang No.1 High',
+        'c-card-loc-d': 'Astrid\'s current high school and research lab base',
+        'footer-text': '&copy; 2026 Astrid Wang. All rights reserved. Created with 💜 for Big Sister\'s academic aspirations.'
+    }
 };
 
-function askPresetQuestion(id) {
-    const questionText = {
-        '1': "⚡ 电磁发射器是怎么做的？",
-        '2': "🧪 大姐的化学周期表竞赛细节？",
-        '3': "📈 她的港大/南洋理工升学时间线？",
-        '4': "☁️ 她的微软学习记录如何？"
-    }[id];
-    
-    appendChatMessage(questionText, "user");
-    
-    setTimeout(() => {
-        const reply = botReplies[id] || "对不起，这个问题把我难住了。";
-        appendChatMessage(reply, "bot");
-    }, 500);
-}
-
-function sendUserChatMessage() {
-    const inputEl = document.getElementById('chat-input');
-    const questionText = inputEl.value.trim();
-    if (!questionText) return;
-    
-    appendChatMessage(questionText, "user");
-    inputEl.value = "";
-    
-    // Simple custom intent classifier
-    setTimeout(() => {
-        let reply = "你好！我已经收到你的探讨意见。大姐主要钻研应用物理和云计算自动化（如 Azure / Power BI），你可以点击下方的快捷推荐按钮来向我了解她具体的科研和升学路线哦！";
-        
-        const text = questionText.toLowerCase();
-        if (text.includes("电磁") || text.includes("炮") || text.includes("物理")) {
-            reply = botReplies['1'];
-        } else if (text.includes("化学") || text.includes("周期表") || text.includes("元素")) {
-            reply = botReplies['2'];
-        } else if (text.includes("升学") || text.includes("大学") || text.includes("时间") || text.includes("规划")) {
-            reply = botReplies['3'];
-        } else if (text.includes("微软") || text.includes("learn") || text.includes("azure") || text.includes("云")) {
-            reply = botReplies['4'];
-        }
-        
-        appendChatMessage(reply, "bot");
-    }, 600);
-}
-
-function appendChatMessage(text, sender) {
-    const chatBody = document.getElementById('chat-body');
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `chat-msg ${sender}`;
-    
-    if (sender === "bot") {
-        // Simple typewriter / streaming effect
-        msgDiv.innerHTML = "<p></p>";
-        chatBody.appendChild(msgDiv);
-        let idx = 0;
-        
-        // Parse markdown bold markers briefly
-        const parsedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        
-        const typingTimer = setInterval(() => {
-            idx++;
-            msgDiv.querySelector('p').innerHTML = parsedText.substring(0, idx);
-            chatBody.scrollTop = chatBody.scrollHeight;
-            if (idx >= parsedText.length) {
-                clearInterval(typingTimer);
-            }
-        }, 15);
-    } else {
-        msgDiv.innerHTML = `<p>${text}</p>`;
-        chatBody.appendChild(msgDiv);
-        chatBody.scrollTop = chatBody.scrollHeight;
+const textElements = {
+    'zh': {
+        'school-info': '🏫 包头市第九十五中学 / 包钢一中 · 高三（2412班）',
+        'motto-text': '“ 光而不耀，静水流深 ”',
+        'career-text': '🎯 <strong>未来方向</strong>：AI 算法与低代码开发 / 飞行器总体设计与轨道动力学',
+        'bio-intro': '你好！我是王馨莹。我是一个对物理、化学与电子工程充满热情的学习与探索者。我喜欢将课本上的公式在现实中转化为可运行的物理实体，也喜欢用代码模拟复杂的科学过程。目前，我正在全力备战 <strong>AST（艾思特考试）</strong> 以及 <strong>雅思（IELTS）</strong>，目标是冲刺香港大学（HKU）、新加坡国立大学（NUS）和南洋理工大学（NTU）等世界一流名校。',
+        'btn-projects': '查看科学项目',
+        'btn-visit-site': '访问学术网站 (wxykok.com)',
+        'sec-title-projects': '🔬 科学与工程项目实践',
+        'sec-subtitle-projects': '点击下方项目页签进行实时模拟与互动体验',
+        'sec-title-timeline': '📅 升学路线图 & 关键里程碑',
+        'sec-subtitle-timeline': '2026 - 2027 备战全球一流名校的冲刺路线'
+    },
+    'zh-tw': {
+        'school-info': '🏫 包頭市第九十五中學 / 包鋼一中 · 高三（2412班）',
+        'motto-text': '“ 光而不耀，靜水流深 ”',
+        'career-text': '🎯 <strong>未來方向</strong>：AI 算法與低代碼開發 / 飛行器總體設計與軌道動力學',
+        'bio-intro': '你好！我是王馨瑩。我是一個對物理、化學與電子工程充滿熱情的學習與探索者。我喜歡將課本上的公式在現實中轉化為可運行的物理實體，也喜歡用代碼模擬複雜的科學過程。目前，我正在全力備戰 <strong>AST（艾思特考試）</strong> 以及 <strong>雅思（IELTS）</strong>，目標是衝刺香港大學（HKU）、新加坡國立大學（NUS）和南洋理工大學（NTU）等世界一流名校。',
+        'btn-projects': '查看科學項目',
+        'btn-visit-site': '訪問學術網站 (wxykok.com)',
+        'sec-title-projects': '🔬 科學與工程項目實踐',
+        'sec-subtitle-projects': '點擊下方項目頁簽進行實時模擬與互動體驗',
+        'sec-title-timeline': '📅 升學路線圖 & 關鍵里程碑',
+        'sec-subtitle-timeline': '2026 - 2027 備戰全球一流名校的衝刺路線'
+    },
+    'en': {
+        'school-info': '🏫 Baotou No.95 Middle School / Baogang No.1 High School · Senior 3 (Class 2412)',
+        'motto-text': '"Light but not dazzling, still waters run deep"',
+        'career-text': '🎯 <strong>Future Direction</strong>: AI Algorithms & Low-code Dev / Aerospace Vehicle Design & Orbital Dynamics',
+        'bio-intro': 'Hello! I am Astrid Wang (王馨莹). I am a passionate learner and explorer of physics, chemistry, and electronic engineering. I enjoy translating formulas from textbooks into functional physical entities and simulating complex scientific processes with code. Currently, I am fully preparing for the <strong>AST (Ameson Science & Technology Test)</strong> and <strong>IELTS</strong>, aiming for top-tier universities like HKU, NUS, and NTU.',
+        'btn-projects': 'View Science Projects',
+        'btn-visit-site': 'Visit Website (wxykok.com)',
+        'sec-title-projects': '🔬 Science & Engineering Practice',
+        'sec-subtitle-projects': 'Click project tabs below for real-time simulations and interactive experiences',
+        'sec-title-timeline': '📅 Higher Education Roadmap & Milestones',
+        'sec-subtitle-timeline': '2026 - 2027 Academic Sprint for Top-Tier Universities'
     }
-}
+};
 
+function switchLanguage(lang) {
+    currentLang = lang;
+    const data = i18n[lang];
+    const texts = textElements[lang];
+    if (!data || !texts) return;
+
+    // 1. Direct IDs
+    for (const key in data) {
+        const el = document.getElementById(key);
+        if (el) {
+            if (data[key].includes('<strong') || data[key].includes('<span')) {
+                el.innerHTML = data[key];
+            } else {
+                el.innerText = data[key];
+            }
+        }
+    }
+
+    // 2. Class Elements in Hero
+    document.querySelector('.school-info').innerText = texts['school-info'];
+    document.querySelector('.motto-text').innerText = texts['motto-text'];
+    document.querySelector('.career-text').innerHTML = texts['career-text'];
+    document.querySelector('.bio-intro').innerHTML = texts['bio-intro'];
+
+    // 3. Section Titles
+    document.querySelector('#projects .section-title').innerText = texts['sec-title-projects'];
+    document.querySelector('#projects .section-subtitle').innerText = texts['sec-subtitle-projects'];
+    document.querySelector('#timeline .section-title').innerText = texts['sec-title-timeline'];
+    document.querySelector('#timeline .section-subtitle').innerText = texts['sec-subtitle-timeline'];
+
+    // 4. Hero Buttons
+    const heroBtns = document.querySelectorAll('.hero-right .actions .btn');
+    if (heroBtns.length >= 2) {
+        heroBtns[0].innerText = texts['btn-projects'];
+        heroBtns[1].innerText = texts['btn-visit-site'];
+    }
+
+    // Update select element value to remain in sync
+    document.getElementById('lang-select').value = lang;
+}
 
 // --- Project 8: 3D Printing Simulator Engine ---
 const modelData = {
@@ -691,7 +773,22 @@ function closeHonorModal() {
 // --- Dom Initialization ---
 document.addEventListener("DOMContentLoaded", () => {
     fetchGitHubProfile();
+    
+    // Set high AST defaults to showcase best fit
+    document.getElementById('ast-math').value = 245;
+    document.getElementById('ast-physics').value = 255;
+    document.getElementById('ast-english').value = 220;
+    updateASTSliderVal('math');
+    updateASTSliderVal('physics');
+    updateASTSliderVal('english');
     calculateASTFit();
+    
+    // Auto-trigger academic radar with relevant research topics
+    document.getElementById('arxiv-query').value = "Aerospace AI & Trajectory";
+    searchAcademicPapers();
+    
+    // Initialize standard translations
+    switchLanguage('zh');
     update3DPrintParams();
 });
 

@@ -1246,4 +1246,15 @@ h1, h2, h3 {
     filter: brightness(0.6) contrast(1.1);
 }
 
+.contact-card-link {
+    transition: var(--transition-smooth);
+}
+
+.contact-card-link:hover {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 12px 40px 0 rgba(0, 242, 254, 0.15) !important;
+    transform: translateY(-4px);
+}
+
+
 

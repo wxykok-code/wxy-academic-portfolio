@@ -27,6 +27,11 @@
             <a href="#projects" class="nav-link" id="nav-projects">科学实践</a>
             <a href="#timeline" class="nav-link" id="nav-timeline">升学规划</a>
             <a href="#contact" class="nav-link" id="nav-contact">联系大姐</a>
+            <select id="lang-select" onchange="switchLanguage(this.value)" style="margin-left: 0.8rem; background: rgba(0,0,0,0.35); border: 1px solid var(--border-light); color: var(--text-primary); font-family: var(--font-sans); font-size: 0.8rem; padding: 0.2rem 0.4rem; border-radius: 4px; outline: none; cursor: pointer; transition: var(--transition-smooth);">
+                <option value="zh">简体中文</option>
+                <option value="zh-tw">繁體中文</option>
+                <option value="en">English</option>
+            </select>
         </nav>
     </header>
 
@@ -202,13 +207,13 @@
 
             <!-- Project Navigation Tabs -->
             <div class="project-tabs" style="flex-wrap: wrap;">
-                <button class="tab-btn active" onclick="switchProjectTab('coilgun')">⚡ 多级电磁发射装置</button>
-                <button class="tab-btn" onclick="switchProjectTab('3dprint')">🖨️ 3D打印创客工坊</button>
-                <button class="tab-btn" onclick="switchProjectTab('chemistry')">🧪 元素周期表解码器</button>
-                <button class="tab-btn" onclick="switchProjectTab('speech')">🎤 梦想之龙英文演讲</button>
-                <button class="tab-btn" onclick="switchProjectTab('mslearn')">☁️ Microsoft Learn 学习轨迹</button>
-                <button class="tab-btn" onclick="switchProjectTab('arxiv')">📚 学术文献前沿雷达</button>
-                <button class="tab-btn" onclick="switchProjectTab('ast')">🎯 AST 录取计算器</button>
+                <button class="tab-btn active" id="tab-coilgun" onclick="switchProjectTab('coilgun')">⚡ 多级电磁发射装置</button>
+                <button class="tab-btn" id="tab-3dprint" onclick="switchProjectTab('3dprint')">🖨️ 3D打印创客工坊</button>
+                <button class="tab-btn" id="tab-chemistry" onclick="switchProjectTab('chemistry')">🧪 元素周期表解码器</button>
+                <button class="tab-btn" id="tab-speech" onclick="switchProjectTab('speech')">🎤 梦想之龙英文演讲</button>
+                <button class="tab-btn" id="tab-mslearn" onclick="switchProjectTab('mslearn')">☁️ Microsoft Learn 学习轨迹</button>
+                <button class="tab-btn" id="tab-arxiv" onclick="switchProjectTab('arxiv')">📚 学术文献前沿雷达</button>
+                <button class="tab-btn" id="tab-ast" onclick="switchProjectTab('ast')">🎯 AST 录取计算器</button>
             </div>
 
             <!-- Project Contents -->
@@ -732,43 +737,41 @@
 
         <!-- Contact Section -->
         <section id="contact" class="section">
-            <h2 class="section-title">✉️ 联系方式 & 留言通道</h2>
-            <div class="contact-card glass-card">
-                <div class="contact-info-panel">
-                    <h3>寻找共同科学探索的伙伴</h3>
-                    <p>无论是学术讨论、项目交流还是升学经验分享，都欢迎联系大姐！</p>
-                    
-                    <div class="contact-details">
-                        <div class="detail-item">
-                            <span class="icon">📧</span>
-                            <span class="text">astrid@wxykok.com</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="icon">🌐</span>
-                            <span class="text"><a href="https://wxykok.com" target="_blank" style="color:var(--accent-cyan)">https://wxykok.com</a></span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="icon">📍</span>
-                            <span class="text">内蒙古 · 包头 · 包钢一中</span>
-                        </div>
-                    </div>
-                </div>
+            <h2 class="section-title" id="contact-sec-title">✉️ 联系方式</h2>
+            <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
                 
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('留言已成功发送至 astrid@wxykok.com！大姐收到后会尽快给您回复！'); this.reset();">
-                    <div class="form-group">
-                        <label for="c-name">您的姓名/身份</label>
-                        <input type="text" id="c-name" placeholder="请输入您的尊姓大名，例如：李老师、招生官" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="c-email">您的邮箱地址</label>
-                        <input type="email" id="c-email" placeholder="name@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="c-message">您的寄语/留言内容</label>
-                        <textarea id="c-message" rows="4" placeholder="写点好听的，或者留下学术探讨意见..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">发送消息</button>
-                </form>
+                <!-- Email Card -->
+                <a href="mailto:astrid@wxykok.com?subject=Academic%20Inquiry" class="contact-card-link glass-card" style="padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-decoration: none; transition: var(--transition-smooth); text-align: center;">
+                    <div style="font-size: 2.5rem;">📧</div>
+                    <h4 style="color: #fff; font-size: 1.2rem;" id="c-card-email-h">官方学术邮箱</h4>
+                    <p style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.95rem;">astrid@wxykok.com</p>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem;" id="c-card-email-d">一键拉起邮箱，与大姐开展学术探讨</p>
+                </a>
+                
+                <!-- Website Card -->
+                <a href="https://wxykok.com" target="_blank" class="contact-card-link glass-card" style="padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-decoration: none; transition: var(--transition-smooth); text-align: center;">
+                    <div style="font-size: 2.5rem;">🌐</div>
+                    <h4 style="color: #fff; font-size: 1.2rem;" id="c-card-site-h">官方学术站</h4>
+                    <p style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.95rem;">wxykok.com</p>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem;" id="c-card-site-d">浏览大姐的个人学术与升学展示空间</p>
+                </a>
+                
+                <!-- GitHub Card -->
+                <a href="https://github.com/wxykok-code" target="_blank" class="contact-card-link glass-card" style="padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-decoration: none; transition: var(--transition-smooth); text-align: center;">
+                    <div style="font-size: 2.5rem;">💻</div>
+                    <h4 style="color: #fff; font-size: 1.2rem;" id="c-card-git-h">GitHub 开源库</h4>
+                    <p style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.95rem;">wxykok-code</p>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem;" id="c-card-git-d">查看大姐的物理模拟与数字化代码库</p>
+                </a>
+
+                <!-- Location Card -->
+                <div class="contact-card-link glass-card" style="padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center;">
+                    <div style="font-size: 2.5rem;">📍</div>
+                    <h4 style="color: #fff; font-size: 1.2rem;" id="c-card-loc-h">地理位置</h4>
+                    <p style="color: var(--accent-pink); font-family: var(--font-display); font-size: 0.95rem;" id="c-card-loc-v">内蒙古 · 包头 / 包钢一中</p>
+                    <p style="color: var(--text-secondary); font-size: 0.82rem;" id="c-card-loc-d">大姐目前就读的学校与日常研学基地</p>
+                </div>
+
             </div>
         </section>
 
@@ -776,37 +779,8 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 Astrid Wang. All rights reserved. Created with 💜 for Big Sister's academic aspirations.</p>
+        <p id="footer-text">&copy; 2026 Astrid Wang. All rights reserved. Created with 💜 for Big Sister's academic aspirations.</p>
     </footer>
-
-    <!-- Floating AI Chatbot -->
-    <div class="ai-chat-widget" id="ai-widget">
-        <button class="ai-chat-btn" onclick="toggleChatWindow()">
-            <span class="chat-icon">🤖</span>
-            <span class="chat-label">大姐的 AI 学术助手</span>
-        </button>
-        <div class="ai-chat-window glass-card" id="chat-window">
-            <div class="chat-header">
-                <span>🤖 Astrid Wang AI Study Companion</span>
-                <button class="close-chat-btn" onclick="toggleChatWindow()">×</button>
-            </div>
-            <div class="chat-body" id="chat-body">
-                <div class="chat-msg bot">
-                    <p>你好！我是大姐的 AI 学术伴读助手。我可以向您介绍大姐的物理电磁炮项目、化学元素周期表大赛、雅思/AST 冲刺进度等。请问您想了解什么？</p>
-                </div>
-            </div>
-            <div class="chat-suggested-questions">
-                <button onclick="askPresetQuestion('1')">⚡ 电磁发射器是怎么做的？</button>
-                <button onclick="askPresetQuestion('2')">🧪 大姐的化学周期表竞赛细节？</button>
-                <button onclick="askPresetQuestion('3')">📈 她的港大/南洋理工升学时间线？</button>
-                <button onclick="askPresetQuestion('4')">☁️ 她的微软学习记录如何？</button>
-            </div>
-            <div class="chat-footer">
-                <input type="text" id="chat-input" placeholder="输入学术探讨问题..." onkeydown="if(event.key === 'Enter') sendUserChatMessage()">
-                <button class="btn btn-primary" style="padding:0.4rem 0.8rem;border-radius:4px" onclick="sendUserChatMessage()">发送</button>
-            </div>
-        </div>
-    </div>
 
     <!-- JS Link -->
     <script src="app.js"></script>
