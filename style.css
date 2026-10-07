@@ -4,22 +4,22 @@
    ------------------------------------------------------------- */
 
 :root {
-    --bg-dark: #0a0e17;
-    --bg-card: rgba(20, 28, 45, 0.55);
-    --bg-card-hover: rgba(30, 41, 67, 0.7);
-    --border-light: rgba(255, 255, 255, 0.08);
-    --border-glow: rgba(0, 242, 254, 0.25);
+    --bg-dark: #070a13; /* Deepened dark backdrop for better contrast */
+    --bg-card: rgba(20, 30, 55, 0.65); /* Richer glass card backdrop */
+    --bg-card-hover: rgba(32, 48, 85, 0.8); /* Refined hover card backdrop */
+    --border-light: rgba(255, 255, 255, 0.14); /* Boosted border opacity for crisp card structure */
+    --border-glow: rgba(0, 242, 254, 0.35); /* Vibrant active/glow border */
     
     /* Neon Palettes */
     --accent-cyan: #00f2fe;
     --accent-blue: #4facfe;
-    --accent-purple: #7f00ff;
-    --accent-pink: #e100ff;
+    --accent-purple: #818cf8; /* Adjusted for slightly lighter, more vibrant violet on dark */
+    --accent-pink: #f472b6; /* Softened slightly for better readability */
     
     /* Text Colors */
-    --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
-    --text-muted: #6b7280;
+    --text-primary: #f9fafb; /* Off-white for high legibility */
+    --text-secondary: #d1d5db; /* Boosted contrast for paragraph/description text */
+    --text-muted: #9ca3af; /* Boosted contrast for meta tags and secondary info */
     
     /* Font Stacks */
     --font-sans: 'Inter', system-ui, sans-serif;
